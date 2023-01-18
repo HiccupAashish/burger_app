@@ -39,13 +39,10 @@ void displayTopping()
 
 int main()
 {
-
     string name;
     double Balance = 0.0;
-    int loop = 0;
     vector<string> topping;
-
-    vector<string> burger;
+    string burger;
 
     cout << "Please Enter your Name" << endl;
     cin >> name;
@@ -55,10 +52,9 @@ int main()
     while (true)
     {
         int mainmenu;
-        double price;
         int selectedburger, selectedtopping;
+        double price = 0.0;
 
-        // system("clear");
         cout << "******************** 🤠🤠🤠   Welcome To Aason Cafe 🤠🤠🤠   ********************" << endl;
         cout << " How can we help you today ? " << name << endl;
 
@@ -67,10 +63,8 @@ int main()
         cin >> mainmenu;
         if (mainmenu == 1)
         {
-
             for (int i = 1; i > 0; i++)
             {
-
                 displayBurger();
                 cin >> selectedburger;
                 if (cin.fail())
@@ -82,21 +76,21 @@ int main()
                 else if (selectedburger == 1)
                 {
                     cout << "Small Burger has been selected. " << endl;
-                    burger.push_back("Small Burger");
+                    burger="Small Burger";
                     price += SMALL_BURGER_Price;
                     break;
                 }
                 else if (selectedburger == 2)
                 {
                     cout << "Medium Burger has been selected." << endl;
-                    burger.push_back("Medium Burger");
+                    burger="Medium Burger";
                     price += MEDIUM_BURGER_Price;
                     break;
                 }
                 else if (selectedburger == 3)
                 {
                     cout << "Big Burger has been selected." << endl;
-                    burger.push_back("Big Burger");
+                    burger="Big Burger";
                     price = LARGE_BURGER_Price;
                     break;
                 }
@@ -195,7 +189,7 @@ int main()
             }
 
             cout << "Your total is $" << price << endl;
-            cout << "Your burger is " << burger[loop] << endl;
+            cout << "Your burger is " << burger << endl;
             cout << "Your toppings are " << endl;
             for (int i = 0; i < topping.size(); i++)
             {
@@ -206,7 +200,7 @@ int main()
             if (selectedtopping == 1)
             {
                 cout << "Your order has been placed" << endl;
-                cout << "Your burger is " << burger[loop] << endl;
+                cout << "Your burger is " << burger << endl;
                 cout << "Your toppings are " << endl;
                 for (int i = 0; i < topping.size(); i++)
                 {
