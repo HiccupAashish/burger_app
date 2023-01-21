@@ -3,10 +3,6 @@ using namespace std;
 #include <vector>
 #include <string>
 #include <limits>
-// int main(){
-//   int a=1;
-//   switch()
-// }
 
 const double SMALL_BURGER_Price = 3.0;
 const double MEDIUM_BURGER_Price = 5.50;
@@ -41,256 +37,317 @@ void displayTopping()
   cout << "6. Extra Burger 🍔🍔" << endl;
 }
 
-class History
-{
-public:
-  vector<string> burger;
-  double total, initialbalance, finalbalance;
-  
-  vector<string> topping;
-};
-
-int main()
-{
-  string firstname;
-  double Balance = 0.0;
-  int loop = 0;
-  History history;
-
-  cout << "Please Enter your Name" << endl;
-  cin >> firstname;
-  cout << "Enter the number of credits to add: " << endl;
-  cin >> Balance;
-  // history.name=firstname;
-
-  do
-  {
-    vector<string> topping;
-    int mainmenu;
-    
-    string burger;
-   
-    double price;
-    int selectedburger, selectedtopping;
-
-    // system("clear");
-    cout << "******************** 🤠🤠🤠   Welcome To Aason Cafe 🤠🤠🤠   ********************" << endl;
-    cout << " How can we help you today ? " << firstname << endl;
-    cout << "1. View History" << endl;
-    cout << "2. See Menu" << endl;
-    cin >> mainmenu;
-    if (mainmenu == 1)
-    {
-      if (loop == 1 || loop > 1)
-      {
-        for (int i = 0; i < history.burger.size(); i++)
-        {
-          cout << "Order Number " << i + 1 << endl;
-          cout << "You ordered a " << history.burger[i] << "with the following toppings: " << endl;
-          for (int j = 0; j < history.topping.size(); j++)
-          {
-            cout << history.topping[j] << endl;
-          }
-          // cout << "your initial balance was " << history[i].initialbalance << ", after you ordered a total of  $" << history[i].total << "you had " << history[i].finalbalance << "left" << endl;
-          // cout << "You ordered a " << history[i].burger << "with the following toppings: " << endl;
-          // cout << "Press any key to go back to main menu" << endl;
-          int x;
-          cin >> x;
-
-          break;
-          ;
-        }
-      }
-      else if (loop == 0)
-      {
-        int x;
-        cout << "Sorry No history Found" << endl;
-        cout << "Press any key to go back to main menu" << endl;
-        cin >> x;
-      }
+bool isValidInput() {
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return false;
     }
-    else if (mainmenu == 2)
+    return true;
+}
+
+void History(vector<string> Burger, vector<vector<string>> Final_topping, vector<double> Total)
+{
+  if (Burger.size() > 0)
+  {
+    for (int i = 0; i < Burger.size(); i++)
     {
-
-      for (int i = 1; i > 0; i++)
+      cout << "Order Number " << i + 1 << endl;
+      cout << "You ordered a " << Burger[i] << "with the following toppings: " << endl;
+      for (int j = 0; j < Final_topping[i].size(); j++)
       {
-
-        displayBurger();
-        cin >> selectedburger;
-        if (cin.fail())
-        {
-          cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          cout << "Please Select a Number from 1 to 3" << endl;
-        }
-        else if (selectedburger == 1)
-        {
-          cout << "Small Burger has been selected. " << endl;
-          burger = "Small Burger";
-          price += SMALL_BURGER_Price;
-          break;
-        }
-        else if (selectedburger == 2)
-        {
-          cout << "Medium Burger has been selected." << endl;
-          burger = "Medium Burger";
-          price += MEDIUM_BURGER_Price;
-          break;
-        }
-        else if (selectedburger == 3)
-        {
-          cout << "Big Burger has been selected." << endl;
-          burger = "Big Burger";
-          price = LARGE_BURGER_Price;
-          break;
-        }
-
-        else
-        {
-          cout << "Please Choose one of the Options above" << endl;
-        }
-      }
-      for (int i = 1; i > 0; i++)
-      {
-        displayTopping();
-        cin >> selectedtopping;
-        if (cin.fail())
-        {
-          cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          cout << "Please Select a Number from 1 to 6" << endl;
-        }
-        else if (selectedtopping == 1)
-        {
-          cout << "Cheese has been added to your burger" << endl;
-          topping.push_back("Cheese");
-          price += CHEESE;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else if (selectedtopping == 2)
-        {
-          cout << "Salad has been added to your burger" << endl;
-          topping.push_back("Salad");
-          price += SALAD;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else if (selectedtopping == 3)
-        {
-          cout << "Bacon has been added to your burger" << endl;
-          topping.push_back("Bacon");
-          price += BACON;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else if (selectedtopping == 4)
-        {
-          cout << "Ketchup has been added to your burger" << endl;
-          topping.push_back("Ketchup");
-          price += KETCHUP;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else if (selectedtopping == 5)
-        {
-          cout << "Mayo has been added to your burger" << endl;
-          topping.push_back("Mayo");
-          price += MAYO;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else if (selectedtopping == 6)
-        {
-          cout << "Extra Burger has been added to your burger" << endl;
-          topping.push_back("Extra Burger");
-          price += EXTRA_BURGER;
-          cout << "Would you like to add more toppings? (1 for yes, 0 for no)" << endl;
-          cin >> selectedtopping;
-          if (selectedtopping == 0)
-          {
-            break;
-          }
-        }
-        else
-        {
-          cout << "Please Choose one of the Options above" << endl;
-        }
+        cout << Final_topping[i][j] << endl;
       }
 
-      cout << "Your total is $" << price << endl;
-      cout << "Your burger is " << burger << endl;
-      cout << "Your toppings are " << endl;
-      for (int i = 0; i < topping.size(); i++)
-      {
-        cout << topping[i] << endl;
-      }
-      cout << "Would you like to go ahead with the order? (1 for yes, 0 for no)" << endl;
-      cin >> selectedtopping;
-      if (selectedtopping == 1)
-      {
-        cout << "Your order has been placed" << endl;
-        cout << "Your burger is " << burger << endl;
-        cout << "Your toppings are " << endl;
-        for (int i = 0; i < topping.size(); i++)
-        {
-          cout << topping[i] << endl;
-        }
-        // cout << "Your total is $" << price << endl;
-        // cout << "Your balance is $" << Balance << endl;
-        // cout << "Your final balance is $" << Balance - price << endl;
-        history.burger.push_back(burger);
-        history.topping.insert(history.topping.end(), topping.begin(), topping.end());
+      cout << "your Total was " << Total[i] << endl;
+    }
+    cout << "Press any key to go back to main menu" << endl;
+    int x;
+    cin >> x;
+  }
+  else
+  {
+    int x;
+    cout << "Sorry No history Found" << endl;
+    cout << "Press any key to go back to main menu" << endl;
+    cin >> x;
+  }
+}
+void Menu(vector<string> &Burger, vector<vector<string>> &Final_topping, vector<double> &Total, double &Balance)
+{
+  
+  string burger;
+  double price;
+  vector<string> topping;
 
-
-      
-        // for (int i = 0; i < topping.size(); i++)
-        // {
-        //   history[loop].togpping.push_back(topping[i]);
-        // }
-
-        // history[loop].total.push_back(price);
-        // history[loop].finalbalance.push_back(Balance-price);
-
-        loop++;
-
-        Balance = Balance - price;
-      }
-      else if (selectedtopping == 0)
-      {
-        cout << "Your order has been cancelled" << endl;
-      }
-      else
-      {
-        cout << "Please Choose one of the Options above" << endl;
-      }
+  while (true)
+  {
+    int selectedburger;
+    displayBurger();
+    cin >> selectedburger;
+    if (isValidInput() == false) {
+        cout << "Please enter a valid number" << endl;
+        
+    }
+     else if (selectedburger == 1)
+    {
+      cout << "You have selected a Small Burger" << endl;
+      burger = "Small Burger";
+      price = SMALL_BURGER_Price;
+      break;
+    }
+    else if (selectedburger == 2)
+    {
+      cout << "You have selected a Medium Burger" << endl;
+      burger = "Medium Burger";
+      price = MEDIUM_BURGER_Price;
+      break;
+    }
+    else if (selectedburger == 3)
+    {
+      cout << "You have selected a Large Burger" << endl;
+      burger = "Large Burger";
+      price = LARGE_BURGER_Price;
+      break;
+    }
+    else if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Please enter a valid number" << endl;
+      break;
     }
     else
     {
       cout << "Please Choose one of the Options above" << endl;
     }
-
   }
+  while(true){
+  int selectedtopping;
+  displayTopping();
+  cin >> selectedtopping;
+  if(isValidInput()==false){
+      cout << "Please enter a valid number" << endl;
+  }
+  
+  else if (selectedtopping == 1)
+  {
+    cout << "Cheese has been added to your Burger" << endl;
+    topping.push_back("Cheese");
+    price += CHEESE;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (selectedtopping == 2)
+  {
+    cout << "Salad has been added to your Burger" << endl;
+    topping.push_back("Salad");
+    price += SALAD;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (selectedtopping == 3)
+  {
+    cout << "Bacon has been added to your Burger" << endl;
+    topping.push_back("Bacon");
+    price += BACON;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (selectedtopping == 4)
+  {
+    cout << "Ketchup has been added to your Burger" << endl;
+    topping.push_back("Ketchup");
+    price += KETCHUP;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (selectedtopping == 5)
+  {
+    cout << "Mayo has been added to your Burger" << endl;
+    topping.push_back("Mayo");
+    price += MAYO;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (selectedtopping == 6)
+  {
+    cout << "Extra Burger has been added to your Burger" << endl;
+    topping.push_back("Extra Burger");
+    price += EXTRA_BURGER;
+    cout << "Do you want to add more toppings? (Y/N)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y')
+    {
+      continue;
+    }
+    else if (choice == 'N' || choice == 'n')
+    {
+      break;
+    }
+    else
+    {
+      cout << "Please enter a valid choice" << endl;
+    }
+  }
+  else if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Please enter a valid number" << endl;
+      break;
+    }
+  else
+  {
+    cout << "Please Choose one of the Options above" << endl;
+  }
+  }
+  cout << "Your Burger is " << burger << " with the following toppings: " << endl;
+  for (int i = 0; i < topping.size(); i++)
+  {
+    cout << topping[i] << endl;
+  }
+  cout << "Your Total is " << price << endl;
+  cout << "Would you like to process your order? (Y/N)" << endl;
+  char choice;
+  cin >> choice;
+  if (choice == 'N' || choice == 'n')
+  {
+    cout << "Press any key to go back to main menu" << endl;
+    int x;
+    cin >> x;
+    return;
+  }
+  else if (choice == 'Y' || choice == 'y' && Balance >= price)
+  {
+    Burger.push_back(burger);
+    Final_topping.push_back(topping);
+    Total.push_back(price);
+    Balance -= price;
+    cout << "Your Order is being processed" << endl;
+    cout << "Your Order will be ready in 5 minutes" << endl;
+    cout << "Your Balance is " << Balance << endl;
+    cout << "Press any key to go back to main menu" << endl;
+    int x;
+    cin >> x;
+  }
+  else if (choice == 'Y' || choice == 'y' && Balance < price)
+  {
+    cout << "You do not have enough credits to process this order" << endl;
+    cout << "Press any key to go back to main menu" << endl;
+    int x;
+    cin >> x;
+  }
+  else
+  {
+    cout << "Please enter a valid choice" << endl;
+  }
+}
 
-  while (loop < 3);
+int main()
+{
+  string name;
+  double Balance = 0.0;
+  vector<string> Burger;
+  vector<vector<string>> Final_topping;
+  vector<double> Total;
+
+  cout << "Please Enter your Name" << endl;
+  cin >> name;
+  cout << "Enter the number of credits to add: " << endl;
+  cin >> Balance;
+
+  while (Balance > 0)
+  {
+
+    int mainmenu;
+    system("clear");
+    cout << "******************** 🤠🤠🤠   Welcome To Aason Cafe 🤠🤠🤠   ********************" << endl;
+    cout << " How can we help you today ? " << name << endl;
+    cout << "1. View History" << endl;
+    cout << "2. See Menu" << endl;
+    cin >> mainmenu;
+    if (mainmenu == 1)
+    {
+      History(Burger, Final_topping, Total);
+    }
+    else if (mainmenu == 2)
+    {
+
+      Menu(Burger, Final_topping, Total, Balance);
+    }
+    else
+    {
+      cout << "Please Choose one of the Options above" << endl;
+    }
+  }
+  cout << "Sorry you have no more credits" << endl;
+  cout << "Please add more credits to continue" << endl;
+  
 }
