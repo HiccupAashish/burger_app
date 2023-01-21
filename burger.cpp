@@ -37,13 +37,15 @@ void displayTopping()
   cout << "6. Extra Burger 🍔🍔" << endl;
 }
 
-bool isValidInput() {
-    if (cin.fail()) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        return false;
-    }
-    return true;
+bool isValidInput()
+{
+  if (cin.fail())
+  {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    return false;
+  }
+  return true;
 }
 
 void History(vector<string> Burger, vector<vector<string>> Final_topping, vector<double> Total)
@@ -75,7 +77,7 @@ void History(vector<string> Burger, vector<vector<string>> Final_topping, vector
 }
 void Menu(vector<string> &Burger, vector<vector<string>> &Final_topping, vector<double> &Total, double &Balance)
 {
-  
+
   string burger;
   double price;
   vector<string> topping;
@@ -85,11 +87,11 @@ void Menu(vector<string> &Burger, vector<vector<string>> &Final_topping, vector<
     int selectedburger;
     displayBurger();
     cin >> selectedburger;
-    if (isValidInput() == false) {
-        cout << "Please enter a valid number" << endl;
-        
+    if (isValidInput() == false)
+    {
+      cout << "Please enter a valid number" << endl;
     }
-     else if (selectedburger == 1)
+    else if (selectedburger == 1)
     {
       cout << "You have selected a Small Burger" << endl;
       burger = "Small Burger";
@@ -122,151 +124,153 @@ void Menu(vector<string> &Burger, vector<vector<string>> &Final_topping, vector<
       cout << "Please Choose one of the Options above" << endl;
     }
   }
-  while(true){
-  int selectedtopping;
-  displayTopping();
-  cin >> selectedtopping;
-  if(isValidInput()==false){
+  while (true)
+  {
+    int selectedtopping;
+    displayTopping();
+    cin >> selectedtopping;
+    if (isValidInput() == false)
+    {
       cout << "Please enter a valid number" << endl;
-  }
-  
-  else if (selectedtopping == 1)
-  {
-    cout << "Cheese has been added to your Burger" << endl;
-    topping.push_back("Cheese");
-    price += CHEESE;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
-    {
-      continue;
     }
-    else if (choice == 'N' || choice == 'n')
+
+    else if (selectedtopping == 1)
     {
-      break;
+      cout << "Cheese has been added to your Burger" << endl;
+      topping.push_back("Cheese");
+      price += CHEESE;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-    else
+    else if (selectedtopping == 2)
     {
-      cout << "Please enter a valid choice" << endl;
+      cout << "Salad has been added to your Burger" << endl;
+      topping.push_back("Salad");
+      price += SALAD;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-  }
-  else if (selectedtopping == 2)
-  {
-    cout << "Salad has been added to your Burger" << endl;
-    topping.push_back("Salad");
-    price += SALAD;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
+    else if (selectedtopping == 3)
     {
-      continue;
+      cout << "Bacon has been added to your Burger" << endl;
+      topping.push_back("Bacon");
+      price += BACON;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-    else if (choice == 'N' || choice == 'n')
+    else if (selectedtopping == 4)
     {
-      break;
+      cout << "Ketchup has been added to your Burger" << endl;
+      topping.push_back("Ketchup");
+      price += KETCHUP;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-    else
+    else if (selectedtopping == 5)
     {
-      cout << "Please enter a valid choice" << endl;
+      cout << "Mayo has been added to your Burger" << endl;
+      topping.push_back("Mayo");
+      price += MAYO;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-  }
-  else if (selectedtopping == 3)
-  {
-    cout << "Bacon has been added to your Burger" << endl;
-    topping.push_back("Bacon");
-    price += BACON;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
+    else if (selectedtopping == 6)
     {
-      continue;
+      cout << "Extra Burger has been added to your Burger" << endl;
+      topping.push_back("Extra Burger");
+      price += EXTRA_BURGER;
+      cout << "Do you want to add more toppings? (Y/N)" << endl;
+      char choice;
+      cin >> choice;
+      if (choice == 'Y' || choice == 'y')
+      {
+        continue;
+      }
+      else if (choice == 'N' || choice == 'n')
+      {
+        break;
+      }
+      else
+      {
+        cout << "Please enter a valid choice" << endl;
+      }
     }
-    else if (choice == 'N' || choice == 'n')
-    {
-      break;
-    }
-    else
-    {
-      cout << "Please enter a valid choice" << endl;
-    }
-  }
-  else if (selectedtopping == 4)
-  {
-    cout << "Ketchup has been added to your Burger" << endl;
-    topping.push_back("Ketchup");
-    price += KETCHUP;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
-    {
-      continue;
-    }
-    else if (choice == 'N' || choice == 'n')
-    {
-      break;
-    }
-    else
-    {
-      cout << "Please enter a valid choice" << endl;
-    }
-  }
-  else if (selectedtopping == 5)
-  {
-    cout << "Mayo has been added to your Burger" << endl;
-    topping.push_back("Mayo");
-    price += MAYO;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
-    {
-      continue;
-    }
-    else if (choice == 'N' || choice == 'n')
-    {
-      break;
-    }
-    else
-    {
-      cout << "Please enter a valid choice" << endl;
-    }
-  }
-  else if (selectedtopping == 6)
-  {
-    cout << "Extra Burger has been added to your Burger" << endl;
-    topping.push_back("Extra Burger");
-    price += EXTRA_BURGER;
-    cout << "Do you want to add more toppings? (Y/N)" << endl;
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y')
-    {
-      continue;
-    }
-    else if (choice == 'N' || choice == 'n')
-    {
-      break;
-    }
-    else
-    {
-      cout << "Please enter a valid choice" << endl;
-    }
-  }
-  else if (cin.fail())
+    else if (cin.fail())
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cout << "Please enter a valid number" << endl;
       break;
     }
-  else
-  {
-    cout << "Please Choose one of the Options above" << endl;
-  }
+    else
+    {
+      cout << "Please Choose one of the Options above" << endl;
+    }
   }
   cout << "Your Burger is " << burger << " with the following toppings: " << endl;
   for (int i = 0; i < topping.size(); i++)
@@ -349,5 +353,4 @@ int main()
   }
   cout << "Sorry you have no more credits" << endl;
   cout << "Please add more credits to continue" << endl;
-  
 }
